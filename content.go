@@ -25,7 +25,34 @@ What would you like to do?
 
 E)nter a code
 W)rite to Santa
+Q)uit
 `
+
+const mainMenuPic string =`
+
+                                                _...._
+                       \  _  /                .::o:::::.
+                        (\o/)                .:::'''':o:.
+                    ---  / \  ---            :o:_    _:::
+                         >*<                 ':}_>()<_{:'
+                        >0<@><             @    ''//\\''    @
+                       >>>@<<*          @ #     //  \\     # @
+                      >@>*<0<<<       __#_#____/'____'\____#_#_
+                     >*>>@<<<@><<     [_________________________]
+                    >@>>0<<<*<<@><     |=_- .-/\ /\ /\ /\--. =_-|
+                   >*>>0<<@><<<@><<<    |-_= | \ \\ \\ \\ \ |-_=-|
+                  >@>>*<<@><>*<<0<*<   |_=-=| / // // // / |_=-_|
+    \*/          >0>>*<<@><>0><<*<@><<  |=_- |'-''-''-''-'  |=_=-|
+___\\U//___     >*>>@><0<<*>>@><*<0<< | =_-| o          o |_==_|
+|\\ | | \\|    >@>>0<*<<0>>@<<0<<<*<@><|=_- | !     (    ! |=-_=|
+| \\| | _(UU)_ >((*))_>0><*<0><@><<<0<*<-,-=| !    ).    ! |-_-=|
+|\ \| || / //||.*.*.*.|>>@<<*<<@>><0<<<((=_| ! __(:')__ ! |=_==|
+|\\_|_|&&_// ||*.*.*.*|_\\db//__     (\_/)-|/^\=^=^^=^=/^\| _=_|
+""""|'.'.'.|~~|.*.*.*|     ____|_   =('Y')=//,------------.
+    |'.'.'.|   ^^^^^^|____|>>>>>>|  ( ~~~ )/(((((((())))))))
+    ~~~~~~~~         '""""'------'  'w---w'  '------------'
+`
+
 const enterCodeContent string = `
 
                   YAY!! LET'S ENTER A CODE!!
@@ -52,4 +79,58 @@ const validCodeContent string = `
   '| |        Y   \___\ \________________\
     '|_________\  /   / /                /
                 \/___/_/________________/
+`
+
+const goodbyeContent string = `
+ 	
+
+                                    .
+                        .       *
+                              |         *
+                   .    *         .            *
+                                          /
+                *      .       ,    *          .    *
+                               ';.
+                      *   -      ;:,   -    *     -   .
+              .  -               ,:;:,
+                     .          ,:;%;;:,           *
+                          /    ::;%#%;::   *    .
+                   *           ::;%#%;:'
+                                ':%#%'  .   .,,.
+                         *    .    #     .,sSSSSs
+                                   #  .,sSSSSSSSS
+                                .,sSSSSSSSSSSSS'
+                           .,sSSSSSSSSSSSSSSSSSs,
+                       .sSSSSSSSSSSSSSSSSSSSSSSSS
+                       sSSSSSSSSSSSSSSSSSSSSSSSS'
+                       'SSSSSSSSSSSSSSSSSSSSSSS'
+                       sSSSS;nww;SSS;mwwwn;SSSSs
+                       'SSS;nnw;sSSSs;wwwnnn;SSSs
+                      .sSS;nnnw;SSSSS;wwwnnn%;SSS
+                     .SSSS;nnnww;SSS;mwwwnnn%;SS'
+                     SSSSS;nnnwwwmmmmmwwwnnn%%;
+                     'SSS'%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+                        ;%%nnnwwwmmmmmwwwnnn%%;
+      ,                 ;%%nnnwwwmmmmmwwwnnn%%;
+   .,;;;,.,;            ;%%nnnwwwmmmmmwwwnnn%%;        ;     ;
+     ';;;;,;;;,.,;      ;%%nnnwwwmmmmmnnnnnn%%;  ,    .;;,.,;;;.
+      ;;;;;;;;,;;;;;,., ;%%nnnnnnnnn;,ooo,;n%%;   ;;;;;,;;,;;,;;;,.
+      ;'   ';;;;;;,;;;;.;%%nnn;,ooo,;OOOOO;n%%;  .;;,;;;;;;;;;;,;;'',
+            ;'  ';;;;,;;,...   OOOOO;'OOO'..,,;,;;,;;;''';;;''';;'
+                  ';;'    ''''''OOO'OOooo' ''' ;'   '     '     '
+                   '         ;,.,;, 'OOO'
+                         ;,.;;';;;';,;.
+                     ;,.;;';;;;;;;;;;;'
+                   .,;;;;;;;;;;;;;;;'
+                     ';'  ';'   ';;
+
+    GOODBYE!!! AND MERRY CHRISTMAS!!!!!!!
 `
