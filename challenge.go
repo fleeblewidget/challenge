@@ -86,31 +86,43 @@ func main() {
 	fmt.Println(header)
 
 	// Show main menu
-	mainMenu(true)
+	mainMenu()
 }
 
 // Display main menu
-func mainMenu(firstTime bool) {
+func mainMenu() {
 	// Prep for reading from command line
 	reader := bufio.NewReader(os.Stdin)
-	
-	// Unless first time, show pic
-	// TODO
+	firstTime := true
 
-	// Text
-	prompt(mainMenuContent)
-	
-	// Get option
-	command, _ := reader.ReadString('\n')
-	command = strings.TrimSpace(command)
+	for {
+		// Unless first time, show pic
+		if (!firstTime) {
+			fmt.Print(mainMenuPic)
+		}
 
-	// Run subroutine for chosen option
-	if (command == "e" || command == "E") {
-		enterCode()
+		// Text
+		prompt(mainMenuContent)
+	
+		// Get option
+		command, _ := reader.ReadString('\n')
+		command = strings.TrimSpace(command)
+
+		// Run subroutine for chosen option
+		if (command == "e" || command == "E") {
+			enterCode()
+		}
+		if (command == "w" || command == "W") {
+			writeSanta()
+		}
+		if (command == "q" || command == "Q") {
+			break
+		}
+		firstTime = false
 	}
-	if (command == "w" || command == "W") {
-		writeSanta()
-	}	
+
+	// End of program
+	fmt.Println(goodbyeContent)
 }
 
 // Called from main function when player chooses to enter a code
@@ -118,23 +130,51 @@ func enterCode() {
 	// Prep for reading from command line
 	reader := bufio.NewReader(os.Stdin)
 	
-	prompt(enterCodeContent)
+	// Non-terminating loop - keep entering codes until the user chooses to go back to the main menu
+	for {
+		prompt(enterCodeContent)
 	
-	code, _ := reader.ReadString('\n')
-	code = strings.TrimSpace(code)
+		code, _ := reader.ReadString('\n')
+		code = strings.TrimSpace(code)
 	
-	fmt.Println("Thanks for entering '" + code + "'...")
-	if isValid(code) {
-		if codeUsed(code) {
-			fmt.Println("Oh no, looks like you already had that one!")
+		fmt.Println("Thanks for entering '" + code + "'...")
+		if isValid(code) {
+			if codeUsed(code) {
+				fmt.Println("Oh no, looks like you already had that one!")
+			} else {
+				// New code
+				handleNewCode(code)
+			}
 		} else {
-			// New code
-			handleNewCode(code)
+			fmt.Println("Code invalid :(")
 		}
-	} else {
-		fmt.Println("Code invalid :(")
+		
+		// Options here - show clues unlocked so far (if any), enter another code, back to main menu
+		fmt.Println("\nWhat next?\n")
+		numCodes := getNumCodes()
+		if (numCodes > 0) {
+			fmt.Printf("S)ee snippets unlocked so far - %d codes\n", numCodes)
+		}
+		prompt("E)nter another code\nR)eturn to main menu")
+		
+		// Get option
+		command, _ := reader.ReadString('\n')
+		command = strings.TrimSpace(command)
+
+		// Handle option
+		if (command == "s" || command == "S") {
+			// Show all unlocked snippets (then go back to main menu)
+			showSnippets(numCodes)
+			return
+		}
+		if (command == "r" || command == "R") {
+			// Break from loop and return to main menu
+			return
+		}
+		if (command == "e" || command == "E") {
+			// Go round loop again, try another code
+		}
 	}
-	// Options here - show clues unlocked so far (if any), enter another code, back to main menu
 }
 
 // Handle newly-entered code
@@ -155,6 +195,17 @@ func handleNewCode(code string) {
 	showSnippet(getNumCodes())
 }
 
+// Show all clues unlocked so far
+func showSnippets(numCodes int) {
+	i := 1
+	for i <= numCodes {
+		fmt.Printf("\nSnippet %d\n\n",i)
+		showSnippet(i)
+		i++
+	}
+}
+
 // Final technical challenge
 func writeSanta() {
+	// TODO
 }
