@@ -18,13 +18,13 @@ func TestInvalidCode(t *testing.T) {
 
 	// Double-check that the valid code referenced by
 	// the tests below actually is valid
-	require.True(t,isValid("CODE1"),"Oh dear, looks like CODE1 isn't a valid code anymore")
+	require.True(t,isValid("32139"),"Oh dear, looks like 32139 isn't a valid code anymore")
 
 	// Code that is a superset of a valid code
-	require.False(t,isValid("CODE12"))
+	require.False(t,isValid("321392"))
 
 	// Code that is a subset of a valid code
-	require.False(t,isValid("CODE"))
+	require.False(t,isValid("3213"))
 }
 
 func TestUsedCode(t *testing.T) {
@@ -35,7 +35,7 @@ func TestUsedCode(t *testing.T) {
 	defer os.Rename("progress_old.dat","progress.dat")
 
 	// Check we have a valid code
-	testCode := "CODE1"
+	testCode := "32139"
 	require.True(t,isValid(testCode))
 
 	// Negative test
@@ -60,7 +60,7 @@ func TestMultipleCodes(t *testing.T) {
 	// Run through three times, make sure we can save more than one
 	// code (and are therefore appending not overwriting the save
 	// state)
-	var testCodes = [3]string{"CODE1","CODE2","CODE3"}
+	var testCodes = [3]string{"32139","WDYMU","eCeyo"}
 	for index,code := range testCodes {
 		// Check the code is valid
 		require.True(t,isValid(code),code + " no longer a valid code.")
@@ -95,7 +95,7 @@ func TestGetNumCodesJunkInSaveFile(t *testing.T) {
 
 	// Check that our test code is valid (I should really be doing this
 	// in a setup method by this point!)
-	testCode := "CODE1"
+	testCode := "32139"
 	require.True(t,isValid(testCode),testCode + " no longer a valid code.")
 
 	// Store
@@ -117,10 +117,11 @@ func TestGetNumCodesJunkInSaveFile(t *testing.T) {
 	require.Equal(t,1,getNumCodes())
 
 	// Add another valid one, double-check it's still counted
-	testCode = "CODE2"
+	testCode = "WDYMU"
 	require.True(t,isValid(testCode),testCode + " no longer a valid code.")
 	err = storeCode(testCode)
 	require.NoError(t,err)
+
 
 	// Now there should be two
 	require.Equal(t,2,getNumCodes())

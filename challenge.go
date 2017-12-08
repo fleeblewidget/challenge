@@ -14,10 +14,12 @@ import (
 	"bufio"
 	"os"
 	"strings"
+	"regexp"
+	"time"
 )
 
-const numCodes int = 5
-var validCodes = [numCodes]string{"CODE1","CODE2","CODE3","CODE4","CODE5"}
+const numCodes int = 6
+var validCodes = [numCodes]string{"32139","WDYMU","eCeyo","14849","STWIH","SNGED"}
 const saveFile string = "progress.dat"
 
 // Print a specified message and display themed prompt
@@ -114,6 +116,7 @@ func mainMenu() {
 		}
 		if (command == "w" || command == "W") {
 			writeSanta()
+			return
 		}
 		if (command == "q" || command == "Q") {
 			break
@@ -140,7 +143,7 @@ func enterCode() {
 		fmt.Println("Thanks for entering '" + code + "'...")
 		if isValid(code) {
 			if codeUsed(code) {
-				fmt.Println("Oh no, looks like you already had that one!")
+				fmt.Println("Oh no! You tried that code already! That must be as disappointing as getting two identical jokes out of the same set of crackers! :-( Try again!")
 			} else {
 				// New code
 				handleNewCode(code)
@@ -207,5 +210,88 @@ func showSnippets(numCodes int) {
 
 // Final technical challenge
 func writeSanta() {
-	// TODO
+	// Prep for reading from command line
+	scanner := bufio.NewScanner(os.Stdin)
+	
+	// Header, request re-written letter
+	prompt(writeSantaContent)
+
+	// Get letter - need to keep reading until we get the
+	// end marker
+	var letter []string
+	var line string
+	for {
+		for scanner.Scan() {
+			line = scanner.Text()
+
+			if strings.TrimSpace(line) == "<END>" {
+				break
+			}
+			letter = append(letter, line)
+		}
+		if strings.TrimSpace(line) == "<END>" {
+			break
+		}
+	}
+
+	// Check whether letter passes muster
+	if (len(letter) > 0) {
+		pass := checkLetter(letter)
+		if (pass) {
+			fmt.Printf(successContent)
+			time.Sleep(10000 * time.Millisecond)
+		} else {
+			fmt.Printf("\nSorry, that's not right.\n")
+		}
+	}
+}
+
+// Check format of letter
+func checkLetter(letter []string) bool {
+	// Check header
+	match, _ := regexp.MatchString("(?i)scott,? ?kevin,? ?m,? ?81,? ?.?51.768[0-9]*, ?-1.227[0-9]*.?", letter[0])
+	if (!match) {
+		fmt.Printf("Error: Name/Age/Location not accepted")
+		return false
+	}
+
+	// Check number of lines
+	if (len(letter) != 6) {
+		fmt.Printf("Error: wrong length")
+		return false
+	}
+	
+	// Check order
+	match, _ = regexp.MatchString("(?i).*paw patrol.*",letter[1])
+	if (match) {
+		match, _ = regexp.MatchString("(?i).*sea ?monkeys.*",letter[2])
+	}
+	if (match) {
+		match, _ = regexp.MatchString("(?i).*colour.*pencil.*",letter[3])
+	}
+	if (match) {
+		match, _ = regexp.MatchString("(?i).*bike.*",letter[4])
+	}
+	if (match) {
+		match, _ = regexp.MatchString("(?i).*elephant.*",letter[5])
+	}
+
+	if (!match) {
+		fmt.Printf("Error: order not accepted")
+		return false
+	}
+
+	// Check for "please may I"
+	i := 1
+	for i <= 5 {
+		match, _ = regexp.MatchString("(?i)please may i have.*",letter[i])
+		if (!match) {
+			fmt.Printf("Error: manners!")
+			return false
+		}
+		i++
+		
+	}
+	
+	return true
 }

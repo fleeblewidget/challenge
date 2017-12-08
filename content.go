@@ -81,6 +81,55 @@ const validCodeContent string = `
                 \/___/_/________________/
 `
 
+const writeSantaContent string = `
+          __                                                      _.
+ _---_.*~<('===          ,~~,         ,~~,         ,~~,           ,_)
+(,    \ (__)=3--__._----_()'4__._----_()'4__._----_()'4__._,____.()'b
+  \--------/-\  ~~(        ) ~~(        ) ~~(        )  ~~:       :'
+   \_______|       (,_,,,_)     (,_,,,_)     (,_,,,_)     ;,,,,,,:
+___I___I___I./     / /  \ \     / /  \ \     / /  \ \     / /  \ \
+
+Alright, let's Write to Santa!
+
+As you know, Santa will only answer letters which are written in the correct format. Electronic Letter Friend is a tool to help those with the correct knowledge to rewrite kids' letters in the right format so that they will get their toys on Christmas Eve.
+
+Here is a letter from Kevin that needs re-writing. Please type the corrected letter below, ending with <END>.
+
+Let's make some Christmas magic for poor, grammatically challenged little Kevin!
+
+Letter begins:
+
+"Dear Santa,
+
+I want a whole bunch of stuff! I've been super good tho. I wanna bike, and also some sea monkeys, and a toy elephant you can ride on. And at least 100 colouring pencils. And mum says if I put that I like books you will bring me more stuff so please can I also have the Paw Patrol annual?
+
+Kevin Michael Scott, 6 and 3/4
+
+PS My house is at 107 Copse Lane Marston Oxford UK The world"
+`
+
+const successContent string = `
+
+  CORRECT!!!!!!!
+
+                      ()
+                     vvvv
+                   .-"  "-.
+                 .'___     '.
+                / /_/_/      \     ____
+               | /_/_/        |  .%%%%%%.
+               |              | /%/_/%%%%\_
+                \         .::::.%%%%%%%%(_{}-o
+                 '.     .::::::::%%%%%%%%/
+                   '-._/:/_/::::::\%%%%%'
+                   o-3_)::::::::::|""""
+                       \::::::::::/
+                        '::::::::'
+                          ''''''     hjw
+
+  You are now a successful Elf. The password is "Noel". CONGRATULATIONS!!!.
+`
+
 const goodbyeContent string = `
  	
 
