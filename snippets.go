@@ -15,7 +15,7 @@ A: It 'soots' his style!
 
 The first rule of writing to Santa is:
 
-All letters must start by listing the child's name, age and location (on separate lines)
+All letters must start by listing the child's name, age and location (on one line)
 `
 	case 2:
 		snippetText = `
